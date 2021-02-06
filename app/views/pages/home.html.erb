@@ -1,2 +1,16 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<!-- <div data-controller="hello">
+ <h1 data-target="hello.output"></h1>
+</div> -->
+
+
+<div class="container mt-5">
+
+  <div class="flex-center mt-4" data-controller="counter">
+    <div class="counter">
+      <span data-target="counter.count"><%= @restaurant_count %></span>
+    </div>
+
+    <!-- <button class="btn btn-outline-secondary" data-action="click->counter#refresh">Refresh counter</button> -->
+  </div>
+
+</div>

@@ -1,0 +1,27 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @restaurant.photo_url %>);">
+  <div class="container">
+    <h1><%= @restaurant.name %></h1>
+    <h2><small><%= @restaurant.address %></small></h2>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <h3>
+    <%= pluralize @restaurant.reviews.size, "review" %>
+  </h3>
+
+  <div id="reviews">
+    <% if @restaurant.reviews.blank? %>
+      Be the first to leave a review for <%= @restaurant.name %>
+    <% else %>
+      <% @restaurant.reviews.each do |review| %>
+        <p id="review-<%= review.id %>"><%= review.content %></p>
+      <% end %>
+    <% end %>
+  </div>
+
+  <%= simple_form_for [@restaurant, @review], remote: true do |f| %>
+    <%= f.input :content %>
+    <%= f.submit 'Add your review', class: 'btn btn-dark w-100' %>
+  <% end %>
+</div>
